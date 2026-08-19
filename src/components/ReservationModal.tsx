@@ -43,100 +43,107 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
   }
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm px-4">
-      <div className="bg-[#161210] border border-[rgba(237,230,218,0.1)] p-8 max-w-md w-full relative">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-md px-4 sm:px-6">
+      <div 
+        className="bg-bg-darker/90 backdrop-blur-xl border border-white/10 p-8 sm:p-12 max-w-md w-full relative shadow-2xl transition-all"
+      >
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-[#8a8078] hover:text-[#E8944F] transition-colors"
+          className="absolute top-6 right-6 text-muted hover:text-copper-bright transition-colors"
         >
-          ✕
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
         
-        <h2 className="font-['Instrument_Serif'] text-4xl mb-2 text-[#EDE6DA]">Reserve a Table</h2>
-        <p className="text-[#8a8078] text-sm mb-6">Join us around the hearth. We'll confirm your reservation shortly.</p>
+        <h2 className="font-serif text-4xl sm:text-5xl mb-3 text-cream">Reserve a Table</h2>
+        <p className="text-muted text-sm sm:text-base mb-8">Join us around the hearth. We'll confirm your reservation shortly.</p>
 
         {success ? (
-          <div className="text-[#E8944F] text-center py-8">
-            <h3 className="font-['Instrument_Serif'] text-3xl italic mb-2">Confirmed</h3>
-            <p className="text-[#EDE6DA]">Your reservation request has been received. We look forward to hosting you.</p>
+          <div className="text-copper-bright text-center py-10 animate-fadeUp">
+            <h3 className="font-serif text-4xl italic mb-4">Confirmed</h3>
+            <p className="text-cream/90 text-base leading-relaxed">Your reservation request has been received. We look forward to hosting you.</p>
             <button 
               onClick={onClose}
-              className="mt-6 bg-[#C1793B] hover:bg-[#E8944F] text-[#0D0B09] px-6 py-2 font-semibold text-sm transition-colors uppercase tracking-wider"
+              className="mt-8 bg-copper hover:bg-copper-bright text-bg-dark px-8 py-3 font-bold text-xs transition-colors uppercase tracking-[0.2em]"
             >
               Close
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5 animate-fadeUp">
             <div>
-              <label className="block text-[#8a8078] text-xs uppercase tracking-wider mb-1">Name</label>
+              <label className="block text-muted text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-2 font-semibold">Name</label>
               <input 
                 required 
                 name="name" 
                 type="text" 
-                className="w-full bg-[#0D0B09] border border-[rgba(237,230,218,0.1)] text-[#EDE6DA] p-3 focus:outline-none focus:border-[#C1793B] transition-colors" 
+                className="w-full bg-bg-dark/50 border border-white/10 text-cream p-3 sm:p-4 focus:outline-none focus:border-copper transition-colors placeholder:text-muted/50" 
+                placeholder="John Doe"
               />
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label className="block text-[#8a8078] text-xs uppercase tracking-wider mb-1">Email</label>
+                <label className="block text-muted text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-2 font-semibold">Email</label>
                 <input 
                   required 
                   name="email" 
                   type="email" 
-                  className="w-full bg-[#0D0B09] border border-[rgba(237,230,218,0.1)] text-[#EDE6DA] p-3 focus:outline-none focus:border-[#C1793B] transition-colors" 
+                  className="w-full bg-bg-dark/50 border border-white/10 text-cream p-3 sm:p-4 focus:outline-none focus:border-copper transition-colors placeholder:text-muted/50" 
+                  placeholder="john@example.com"
                 />
               </div>
               <div>
-                <label className="block text-[#8a8078] text-xs uppercase tracking-wider mb-1">Phone</label>
+                <label className="block text-muted text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-2 font-semibold">Phone</label>
                 <input 
                   required 
                   name="phone" 
                   type="tel" 
-                  className="w-full bg-[#0D0B09] border border-[rgba(237,230,218,0.1)] text-[#EDE6DA] p-3 focus:outline-none focus:border-[#C1793B] transition-colors" 
+                  className="w-full bg-bg-dark/50 border border-white/10 text-cream p-3 sm:p-4 focus:outline-none focus:border-copper transition-colors placeholder:text-muted/50" 
+                  placeholder="+91 98765 43210"
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-5">
               <div>
-                <label className="block text-[#8a8078] text-xs uppercase tracking-wider mb-1">Date</label>
+                <label className="block text-muted text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-2 font-semibold">Date</label>
                 <input 
                   required 
                   name="date" 
                   type="date" 
-                  className="w-full bg-[#0D0B09] border border-[rgba(237,230,218,0.1)] text-[#EDE6DA] p-3 focus:outline-none focus:border-[#C1793B] transition-colors [color-scheme:dark]" 
+                  className="w-full bg-bg-dark/50 border border-white/10 text-cream p-3 sm:p-4 focus:outline-none focus:border-copper transition-colors [color-scheme:dark]" 
                 />
               </div>
               <div>
-                <label className="block text-[#8a8078] text-xs uppercase tracking-wider mb-1">Time</label>
+                <label className="block text-muted text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-2 font-semibold">Time</label>
                 <input 
                   required 
                   name="time" 
                   type="time" 
-                  className="w-full bg-[#0D0B09] border border-[rgba(237,230,218,0.1)] text-[#EDE6DA] p-3 focus:outline-none focus:border-[#C1793B] transition-colors [color-scheme:dark]" 
+                  className="w-full bg-bg-dark/50 border border-white/10 text-cream p-3 sm:p-4 focus:outline-none focus:border-copper transition-colors [color-scheme:dark]" 
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-[#8a8078] text-xs uppercase tracking-wider mb-1">Guests</label>
+              <label className="block text-muted text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-2 font-semibold">Guests</label>
               <select 
                 required 
                 name="guests"
-                className="w-full bg-[#0D0B09] border border-[rgba(237,230,218,0.1)] text-[#EDE6DA] p-3 focus:outline-none focus:border-[#C1793B] transition-colors"
+                className="w-full bg-bg-dark/50 border border-white/10 text-cream p-3 sm:p-4 focus:outline-none focus:border-copper transition-colors appearance-none"
               >
-                {[1,2,3,4,5,6,7,8].map(n => <option key={n} value={n}>{n} {n===1?'Guest':'Guests'}</option>)}
+                {[1,2,3,4,5,6,7,8,9,10].map(n => <option key={n} value={n}>{n} {n===1?'Guest':'Guests'}</option>)}
               </select>
             </div>
 
-            {error && <p className="text-red-400 text-sm mt-2">{error}</p>}
+            {error && <p className="text-red-400 text-sm mt-1">{error}</p>}
 
             <button 
               type="submit" 
               disabled={loading}
-              className="mt-4 bg-[#C1793B] hover:bg-[#E8944F] text-[#0D0B09] py-3 font-semibold text-sm uppercase tracking-widest transition-colors disabled:opacity-50"
+              className="mt-6 bg-copper hover:bg-copper-bright text-bg-dark py-4 font-bold text-xs uppercase tracking-[0.2em] transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:-translate-y-0.5 shadow-lg shadow-copper/20"
             >
               {loading ? "Confirming..." : "Confirm Reservation"}
             </button>
